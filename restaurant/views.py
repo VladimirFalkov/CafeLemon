@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .models import Booking
-from.serializers import bookingSerializer
+from .serializers import BookingSerializer
 
 
 
@@ -13,7 +13,7 @@ def index(request):
  return render(request, 'index.html', {})
 
 
-class bookingview(APIView):
+class Bookingview(APIView):
 
     def get(self, request):
        items = Booking.objects.all()
