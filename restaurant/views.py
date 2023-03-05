@@ -4,8 +4,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-
-from .models import Booking
+from rest_framework import generics,viewsets
+from .models import Booking, Menu
 from .serializers import BookingSerializer, MenuSerializer
 
 
@@ -30,7 +30,16 @@ class MenuView(APIView):
       if serializer.is_valid():
          serializer.save()
          return Response({'status':'sucess', 'data': serializer.data})
-      
+
+class BookingViewSet(viewsets.ModelViewSet):
+    permission_classes = [IsAuthenticated]
+    queryset = Booking.objects.all()
+    serializer_class = BookingSerializer
+
+class MenuItemsView(generics.ListCreateAPIView):
+   permission_classes = [IsAuthenticated]
+   queryset = Menu.objects.all()
+   serializer_class = MenuSerializer
 
 @api_view()
 @permission_classes([IsAuthenticated])
