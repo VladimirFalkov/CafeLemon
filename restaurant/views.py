@@ -30,3 +30,10 @@ class MenuView(APIView):
       if serializer.is_valid():
          serializer.save()
          return Response({'status':'sucess', 'data': serializer.data})
+      
+
+@api_view()
+@permission_classes([IsAuthenticated])
+# @authentication_classes([TokenAuthentication])
+def msg(request):
+   return Response({"message":"This view is protected"})
