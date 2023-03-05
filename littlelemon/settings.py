@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'reservation',
     'restaurant',
     'rest_framework',
+    'rest_framework.authoken',
 ]
 
 MIDDLEWARE = [
