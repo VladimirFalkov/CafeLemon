@@ -6,4 +6,3 @@ class MenuItemTest(TestCase):
         item = Menu.objects.create(title="IceCream", price=8, inventory=10)
         self.assertEqual(item, "IceCream : 8")
 
-        
